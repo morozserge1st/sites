@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+$color-main: #FAFAFA;
+$color-white: #ffffff;
+$color-grey: #777777;
+$color-black: #000000;
+$color-lightblack: #06060A;
+$color-button: #959595;
+$color-border: #E1E1E1;
+
+@mixin font-main {
+    font-family: 'Roboto', sans-serif;
+}
+
+@mixin border {
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+}
+
+* {
+    @include font-main;
+
+    margin: 0;
+    padding: 0;
+}
+
+.section-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.header {
+    .section-inner {
+        padding: 20px;
+    }
+    .nav__list::before {
+        content:'';
+        height: 2px;
+        width: 21px;
+        background: $color-lightblack;
+    } 
+}
+
+.nav {
+    display: none;
+
+    &__list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__link {
+        padding: 15px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: $color-grey;
+        font-weight: bold;
+
+        &:hover {
+            color: $color-black;
+        }
+    }
+}
+
+.about {
+
+    &.section-outer {
+        background: url(../img/about.png) no-repeat center center;
+        background-size: cover;
+        box-shadow: 0px 7px 10px -10px $color-black inset;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        font-weight: 300;
+        padding: 70px 0;
+    }
+
+    &__title {
+        background: $color-black;
+        color: $color-white;
+        font-size: 48px;
+        padding: 0 20px;
+        margin-bottom: 40px;
+        letter-spacing: 8px;
+    }
+
+    &__subtitle {
+        font-size: 18px;
+        letter-spacing: 7px;
+      }
+}
+
+.portfolio {
+    background: $color-main;
+    padding: 30px 0;
+    box-shadow: 0px -7px 10px -10px $color-black inset;
+
+    .nav {
+        @include border;
+        
+        &__item {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 12px;
+    }
+    &__column {
+        flex: 100%;
+        max-width: 100%;
+        padding: 0 12px;
+    }
+    &__img {
+        position: relative;
+        margin-top: 25px;
+
+        &:hover::after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            content: url(../img/cross-icon.svg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba($color: $color-black, $alpha: 0.5);
+        }
+
+        img {
+            vertical-align: middle;
+            width: 100%;
+        }
+    }
+    &__button {
+        padding: 35px;
+        text-align: center;
+
+        button {
+            text-transform: uppercase;
+            font-size: 15px;
+            color: $color-white;
+            font-weight: bold;
+            padding: 10px 25px;
+            background: $color-button;
+            border: none;
+            border-radius: 2px;
+
+            &:hover {
+                cursor: pointer;
+                background: $color-grey;
+            }
+        }
+    }
+}
+
+.blog {
+    .logo {
+        padding: 40px;
+        margin-top: 20px;
+    }
+}
+
+.concact {
+    .nav {
+        @include border;
+
+        display: block;
+        padding: 25px;
+    }
+}
+
+.footer {
+    &__content {
+        font-size: 13px;
+        padding: 35px;
+        color: $color-grey;
+
+        span {
+            color: $color-black;
+            font-weight: bold;
+        }
+    }
+}
+
+@media (min-width:425px) {
+    .portfolio__column {
+        flex: 44%;
+        max-width: 44%;
+    }
+    .nav__link {
+        padding: 20px;
+    }
+}
+
+@media (min-width:768px) {
+    .about {
+        &__content {
+            padding: 250px 0;
+        }
+        &__title {
+            padding: 0 40px;
+        }
+    }
+
+    .nav {
+        display: block;
+        
+        &__link {
+            padding: 20px;
+        }
+    }
+    
+    .header .section-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .portfolio__column {
+        flex: 30%;
+        max-width: 30%;
+    }
+}
